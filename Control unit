@@ -1,0 +1,23 @@
+There are several parts of a control unit but mainly, 
+
+CPU, ALU and registers. 
+
+CPU - central processing unit , ALU - Arithmetic logic unit Processors. 
+
+Computers are of two types, General purpose and dedicated 
+
+main elements - 
+
+memory 
+alu
+ reigster 
+timing circuits 
+control unit 
+flags 
+bus
+
+etc 
+
+memory heirarchy 
+
+memory -> registers -> ALU -> registers -> memory 
