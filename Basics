@@ -4,3 +4,11 @@ Machine instructions and addresing modes, Control unit > basics > register and i
 Pipelining > Basicas > Performance evaluation in pipelining > Pipelining dependencies 
 Memory Hierarchy > Cache memory and Cache org > Mapping tehcniques > Cache replacement techniques > cache updation policies > main memory 
 I/O Interface > modes of data transfer > Secondary memory 
+
+
+For hexadecimal nos remember that: 
+If we add 
+
+1 byte to hexadeicdaml then it will add 1 to it. HEX WORKS IN BYTE. EG 
+
+if HEX is (041E)H then adding 1 byte will mean -> (041F), adding more +1 -> (0420) 
