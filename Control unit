@@ -21,3 +21,5 @@ etc
 memory heirarchy 
 
 memory -> registers -> ALU -> registers -> memory 
+
+there needs to make several additions here. ** 
