@@ -1,0 +1,6 @@
+I/O Devices: 
+
+Def: 
+Program controlled I/O: Consider a task that reads characters
+typed on a keyboard, stores these data in the memory, and displays the same characters on a display screen. A simple way of implementing this task is to write a program that performs all functions needed to realize the desired action. This method is known as program-controlled I/O.
+
