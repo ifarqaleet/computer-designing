@@ -4,3 +4,9 @@ Def:
 Program controlled I/O: Consider a task that reads characters
 typed on a keyboard, stores these data in the memory, and displays the same characters on a display screen. A simple way of implementing this task is to write a program that performs all functions needed to realize the desired action. This method is known as program-controlled I/O.
 
+the program enters a wait loop in which it repeatedly
+tests the device status. During this period, the processor is not performing any useful
+computation. There are many situations where other tasks can be performed while waiting
+for an I/O device to become ready. To allow this to happen, we can arrange for the I/O
+device to alert the processor when it becomes ready. It can do so by sending a hardware
+signal called an interrupt request to the processor. 
