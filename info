@@ -1,0 +1,7 @@
+Register file: A register file is a collection of registers inside the CPU that can be accessed quickly by the processor for storing temporary data, instructions, or addresses. It acts like a small, ultra-fast memory bank where the CPU keeps the values it is actively working with.
+
+
+DATA PATH
+The datapath is like a network of functional units connected by buses and multiplexers, controlled by signals from the control unit.
+Datapath = Operations
+Control Unit = Brain that tells the datapath what to do.
