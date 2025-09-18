@@ -23,3 +23,9 @@ memory heirarchy
 memory -> registers -> ALU -> registers -> memory 
 
 there needs to make several additions here. ** 
+
+
+Multiplexers are controlled by signals that select which input data appear at the mul-
+tiplexer’s output. For example, when B_select is equal to 0, MuxB selects the contents of
+register RB to be available at input InB of the ALU. Note that two bits are needed to control
+MuxC and MuxY, because each multiplexer selects one of three inputs.
