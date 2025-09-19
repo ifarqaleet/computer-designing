@@ -12,3 +12,11 @@ If we add
 1 byte to hexadeicdaml then it will add 1 to it. HEX WORKS IN BYTE. EG 
 
 if HEX is (041E)H then adding 1 byte will mean -> (041F), adding more +1 -> (0420) 
+
+
+
+----
+Overfow: 
+If Cin to the most significant bit and Cout from the most significant bit are different than the two numbers addition will lead to overflow. 
+This condition goes true for 2s complementation. 
+
