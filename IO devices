@@ -10,3 +10,11 @@ computation. There are many situations where other tasks can be performed while 
 for an I/O device to become ready. To allow this to happen, we can arrange for the I/O
 device to alert the processor when it becomes ready. It can do so by sending a hardware
 signal called an interrupt request to the processor. 
+\\
+
+
+interrupts: 
+
+Just as interrupt comes, the PC (that saves addressing of the next instruction to be executed) is fed with the address of the first program line in the interrupt. 
+As it completes I it moves to the interrupt. 
+After completing all interrupt tasks, it moves back to I+1, in order to go back to the I+1 task, it must save the addresses of I+1 elsewhere in a temporary memory so that it can replace the PC with the address of I+1 once we are at the last instruction of the interrupt. 
