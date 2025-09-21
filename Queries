@@ -1,0 +1,12 @@
+1> 
+
+Lets say a task taks 100 units of time and of which 40 are sequential while 60 are parallel with single processor used. If 2 and 4 are used respectively what will be the time. 
+
+answer : for sequential (series) - the time remains teh same no matter what while for parallel there will be a difference in the nature. 
+for two processors instead of 1 the parallel part will be divided by two. i.e. 
+
+40 + 60/2 = 70 
+
+ for 4 processors the parallel part will be further divided. 
+
+40 + 30/2 = 55
