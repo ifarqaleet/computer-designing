@@ -1,0 +1,8 @@
+Some concepts: 
+
+Stages: A stage is like every step of a work. IF we divide a work in 5 steps then each step is a stage. In Pipelining, stage means one of - IF, ID, EX, MEM, WB 
+Clock cycle: One tick of a CPU clock. During Clock cycle each stage can do its work. 
+For one instruction - cycles required per instruction (CPI) should be == 1 for pipelined one 
+For none pipelined one its generally == number of stages. 
+
+Clock freqency = How many 
