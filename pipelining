@@ -17,3 +17,13 @@ Control hazards:
 These occur and arise due to branching.
 
 
+
+Some very important concepts: 
+
+- Operand Forwarding (theory and numerical) 
+- Multiple processors involved (Core) (1 question came) 
+- Chart making based questions 
+- Idea of operand forwarding 
+- Stalls and CPI 
+- Definition of all 
+_practice
