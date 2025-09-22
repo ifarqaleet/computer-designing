@@ -8,3 +8,12 @@ For none pipelined one its generally == number of stages.
 Clock freqency = How many cycles are reuqired per unit time.
 
 there are differenet types of hazards when we study pipelining. Naming - Structral, control and data hazards. 
+
+
+Structural Hazards: 
+These often arise due hardware issues such as memory being busy. If memory is busy in some other work, then stalling happens and time gets wasted 
+
+Control hazards: 
+These occur and arise due to branching.
+
+
