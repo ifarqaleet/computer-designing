@@ -5,4 +5,4 @@ Clock cycle: One tick of a CPU clock. During Clock cycle each stage can do its w
 For one instruction - cycles required per instruction (CPI) should be == 1 for pipelined one 
 For none pipelined one its generally == number of stages. 
 
-Clock freqency = How many 
+Clock freqency = How many cycles are reuqired per unit time.
