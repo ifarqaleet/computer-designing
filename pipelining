@@ -6,3 +6,5 @@ For one instruction - cycles required per instruction (CPI) should be == 1 for p
 For none pipelined one its generally == number of stages. 
 
 Clock freqency = How many cycles are reuqired per unit time.
+
+there are differenet types of hazards when we study pipelining. Naming - Structral, control and data hazards. 
