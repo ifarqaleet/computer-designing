@@ -29,7 +29,7 @@ Some very important concepts:
 _practice
 
 
-WAR - Inti dependence 
-WAW - Output dependence 
+WAR - Inti dependence // Solution - register renaming  
+WAW - Output dependence // Sol - REgister renaming 
 
-RAW - True Dependence 
+RAW - True Dependence // Stalling **** x
