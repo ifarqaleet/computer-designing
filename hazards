@@ -1,0 +1,214 @@
+Let’s go step-by-step and break down **control hazards** in pipelining, why they happen, and how modern CPUs solve them.
+
+---
+
+## **1. What are Control Hazards?**
+
+A **control hazard** (also called a **branch hazard**) happens when the **pipeline doesn’t know what instruction to fetch next** because of a **branch or jump instruction**.
+
+### **Why This Happens:**
+
+* In a pipelined CPU, the **next instruction is fetched in the IF (Instruction Fetch) stage** *before* the current instruction is fully executed.
+* For **branch instructions** like:
+
+  ```
+  BEQ R1, R2, LABEL
+  ```
+
+  * The decision **whether the branch will be taken or not** isn’t known until the **EX stage** (or sometimes even MEM stage).
+  * Meanwhile, the pipeline **guesses** and continues fetching instructions.
+  * If the guess is **wrong**, the **wrong instructions must be flushed**, causing wasted cycles (pipeline bubbles).
+
+---
+
+## **2. Example of Control Hazard**
+
+Consider a simple 5-stage pipeline:
+`IF → ID → EX → MEM → WB`
+
+```
+I1: BEQ R1, R2, TARGET
+I2: ADD R3, R4, R5     ; fetched assuming branch not taken
+I3: SUB R6, R7, R8
+```
+
+| Cycle | IF     | ID    | EX                                 | MEM | WB |
+| ----- | ------ | ----- | ---------------------------------- | --- | -- |
+| 1     | I1     |       |                                    |     |    |
+| 2     | I2     | I1    |                                    |     |    |
+| 3     | I3     | I2    | **I1 (branch decision made here)** |     |    |
+| 4     | WRONG! | FLUSH | FLUSH                              |     |    |
+
+* At **Cycle 3**, CPU finally knows if the branch is taken.
+* **If branch is taken:**
+
+  * I2 and I3 were wrong → **flush them**.
+  * Restart fetch from TARGET → **pipeline stalls by 2 cycles**.
+
+---
+
+## **3. Cost of Control Hazards**
+
+* **Pipeline stalls = lost performance**
+* For a branch resolved in EX stage, **2–3 cycles are wasted** for every misprediction.
+* If **20% of instructions are branches**, and half of them mispredict, the CPU performance can drop **dramatically** without solutions.
+
+---
+
+## **4. Solutions to Control Hazards**
+
+### **A. Stalling (Simplest, but slowest)**
+
+* The CPU **waits** until the branch outcome is known before fetching new instructions.
+* **Implementation:** Insert "bubbles" (NOPs) into the pipeline.
+
+| Cycle | IF          | ID          | EX  | MEM | WB |
+| ----- | ----------- | ----------- | --- | --- | -- |
+| 1     | BEQ         |             |     |     |    |
+| 2     | **STALLED** | BEQ         |     |     |    |
+| 3     | **STALLED** | **STALLED** | BEQ |     |    |
+
+* **Downside:** Wastes many cycles → bad performance.
+
+---
+
+### **B. Branch Prediction**
+
+> *Predict what will happen, fetch ahead, and fix later if wrong.*
+
+The CPU **guesses** whether the branch will be taken or not.
+
+#### **1. Static Prediction**
+
+* Fixed, simple rules:
+
+  * *Always Not Taken*: Assume sequential flow continues.
+  * *Always Taken*: Assume the branch will always go to its target.
+  * *Backwards Taken, Forwards Not Taken (BTFNT)*:
+
+    * Loops (backward branches) are predicted taken,
+    * Forward branches predicted not taken.
+* **Low accuracy**, but easy to implement.
+
+---
+
+#### **2. Dynamic Prediction (Modern CPUs)**
+
+* CPU **learns from past behavior** using hardware called a **Branch Predictor**.
+* Maintains a **Branch History Table (BHT)**:
+
+  * Uses **bits** to track whether a branch was taken previously.
+  * Example: **2-bit predictor**
+
+    * Needs two mispredictions in a row to change its guess → much higher accuracy (\~90%+).
+
+**Benefit:**
+
+* If prediction is correct → **no stalls**.
+* If wrong → **pipeline flush**, penalty similar to stalling.
+
+---
+
+### **C. Delayed Branch (Compiler Scheduling)**
+
+The **compiler** rearranges instructions to **fill the empty slots** that occur after a branch.
+
+Example:
+
+```
+BEQ R1, R2, TARGET
+NOP            ; bubble (waste)
+```
+
+Becomes:
+
+```
+BEQ R1, R2, TARGET
+ADD R5, R6, R7  ; useful work instead of a bubble
+```
+
+* **Works well in simple RISC architectures**, but is limited because compilers can't always find independent instructions to fill delay slots.
+
+---
+
+### **D. Moving Branch Resolution Earlier**
+
+* Design hardware so that branch decision happens **in ID stage** instead of EX stage.
+* **Effect:** Cuts penalty from 2-3 cycles → 1 cycle.
+* Requires extra hardware like:
+
+  * **Dedicated adder** to compute branch target in ID stage.
+  * Faster comparators.
+
+---
+
+### **E. Speculative Execution**
+
+* CPU **predicts the branch and executes both paths**:
+
+  * Keep track of which instructions are speculative.
+  * If prediction is wrong → discard the wrong path.
+* **Very powerful but complex**:
+
+  * Used in modern superscalar CPUs like Intel Core and AMD Ryzen.
+
+---
+
+## **5. Summary of Solutions**
+
+| Solution                  | Complexity     | Speed          | Accuracy                | Used In         |
+| ------------------------- | -------------- | -------------- | ----------------------- | --------------- |
+| **Stalling**              | Simple         | Very slow      | 100% (no wrong guesses) | Old/basic CPUs  |
+| **Static Prediction**     | Simple         | Fast           | Low (\~60-70%)          | Early RISC CPUs |
+| **Dynamic Prediction**    | Complex        | Very fast      | High (\~90%+)           | Modern CPUs     |
+| **Delayed Branch**        | Compiler-based | Medium         | Medium                  | MIPS-like RISC  |
+| **Speculative Execution** | Very complex   | Extremely fast | Very high               | High-end CPUs   |
+
+---
+
+## **6. Real-World Example**
+
+Modern CPUs like Intel and AMD:
+
+* Use **dynamic branch prediction** with **speculative execution**.
+* Can predict with **98–99% accuracy** using:
+
+  * Global history
+  * Local history
+  * Neural predictors (in some designs)
+
+Example:
+If the CPU predicts correctly 99% of the time, branch penalty almost disappears.
+
+---
+
+## **7. Visual Recap**
+
+Without prediction:
+
+```
+Cycle: 1 2 3 4 5 6
+       IF ID EX MEM WB
+           stall stall
+```
+
+With prediction:
+
+```
+Cycle: 1 2 3 4 5 6
+       IF ID EX MEM WB
+       IF ID EX MEM WB  <- correct guess, no stalls
+```
+
+---
+
+## **Key Takeaways**
+
+1. **Control hazards** occur due to uncertainty in branch decisions.
+2. Without handling, they **stall the pipeline**, wasting cycles.
+3. **Solutions evolve by complexity:**
+
+   * Stalling → Static Prediction → Dynamic Prediction → Speculative Execution.
+4. Modern CPUs use **branch prediction + speculative execution** to almost eliminate branch penalties.
+
+Would you like me to create a **timing diagram comparing correct vs incorrect prediction**?
