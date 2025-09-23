@@ -30,6 +30,6 @@ _practice
 
 
 WAR - Inti dependence 
-WAW -
+WAW - Output dependence 
 
-RAW
+RAW - True Dependence 
