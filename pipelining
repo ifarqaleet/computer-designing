@@ -33,3 +33,6 @@ WAR - Inti dependence // Solution - register renaming
 WAW - Output dependence // Sol - REgister renaming 
 
 RAW - True Dependence // Stalling **** x
+
+
+Hence remember that only true dependency is RAW and Output dependency - WAW. Do not consider WAR as a dependency as it is an anti dependency event 
