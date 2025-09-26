@@ -7,3 +7,7 @@ Main memory - second largest (within computer)  (slowest but least expensive)
 Secondary - largest 
 Cache memory - closet  to CPU 
 Register - within a CPU (fastest and most expensive) 
+
+CPU - generates only the logical address. 
+
+We use locality of reference in most cases to ensure that we get the data early hand 
