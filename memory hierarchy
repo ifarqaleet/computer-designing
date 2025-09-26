@@ -16,3 +16,27 @@ We use locality of reference in most cases to ensure that we get the data early 
 There are two types of locality of reference: 
 1) Spatial - Take the required portion of memory to the cache (nearer) as it might be required
 2) temporal - The portion that is in use repeatedly, so we give it prefence to push it closer. (LRU is used) 
+
+
+Idea temporal:
+"If you used something recently, you'll probably use it again soon."
+Example (Code):
+for (int i = 0; i < 5; i++) {
+    sum = sum + arr[10];  // repeatedly accessing arr[10]
+}
+arr[10] is accessed again and again, so keeping it in cache avoids repeated memory fetches.
+Real-life analogy:
+Think of a coffee cup you keep on your desk because you drink coffee multiple times a day — you don't put it back in the cupboard every time.
+
+Idea Spatial: 
+
+Idea:
+"If you use one memory address, you're likely to use nearby addresses soon."
+Example (Code):
+for (int i = 0; i < 5; i++) {
+    sum = sum + arr[i];  // accessing arr[0], arr[1], arr[2]...
+}
+The program accesses consecutive array elements, which are stored next to each other in memory.
+Real-life analogy:
+If you're reading a book, you don't just read one word; you read the next words on the same page because they're nearby.
+
