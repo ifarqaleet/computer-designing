@@ -1,0 +1,9 @@
+with referece to the memory there are there three concepts - 
+1) Cocst 2) Speed 3) Size 
+
+There are various types of memories in a computer such as - registers, main memory, secondary memory, cache memory. 
+
+Main memory - second largest (within computer)  (slowest but least expensive) 
+Secondary - largest 
+Cache memory - closet  to CPU 
+Register - within a CPU (fastest and most expensive) 
