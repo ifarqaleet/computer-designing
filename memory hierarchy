@@ -40,3 +40,11 @@ The program accesses consecutive array elements, which are stored next to each o
 Real-life analogy:
 If you're reading a book, you don't just read one word; you read the next words on the same page because they're nearby.
 
+
+
+
+Mapping And its types: 
+Direct, 
+Associative 
+Set associative 
+
