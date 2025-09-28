@@ -57,3 +57,7 @@ mapping is all about how to keep the data from main memory to the cache
 Direct mapping: 
 
 many to one mapping. Goes in series. Main memory is directly blocked to the cache. 
+
+Location of the block in cache =  remainder of (block number/ number of lines in the cache) 
+
+for example the block number is 5 and the number of cache lines is 4 then the location of the block in the cache will be 1 as the remains er is one 
