@@ -61,3 +61,9 @@ many to one mapping. Goes in series. Main memory is directly blocked to the cach
 Location of the block in cache =  remainder of (block number/ number of lines in the cache) 
 
 for example the block number is 5 and the number of cache lines is 4 then the location of the block in the cache will be 1 as the remains er is one 
+
+Associative mapping: 
+
+Many to many mapping. 
+
+Better than direct mapping. Place at any available space - reduces conflict misses. But takes more time to find out the free spaces 
