@@ -50,3 +50,5 @@ Set associative
 
 (conti) 
 
+
+mapping is all about how to keep the data from main memory to the cache 
