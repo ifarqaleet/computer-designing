@@ -52,3 +52,8 @@ Set associative
 
 
 mapping is all about how to keep the data from main memory to the cache 
+
+
+Direct mapping: 
+
+many to one mapping. Goes in series. Main memory is directly blocked to the cache. 
