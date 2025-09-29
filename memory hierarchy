@@ -68,3 +68,8 @@ Many to many mapping.
 
 Better than direct mapping. Place at any available space - reduces conflict misses. But takes more time to find out the free spaces 
 In associative mapping we need tag = cache lines. There is no specific tag because all the places are possible. here we need more comparators and cache lines 
+
+
+
+Set Associative mapping: 
+for a set associative mapping if we say k-way set associative that will mean that each set has k number of blocks. 
