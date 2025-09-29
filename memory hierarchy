@@ -73,3 +73,10 @@ In associative mapping we need tag = cache lines. There is no specific tag becau
 
 Set Associative mapping: 
 for a set associative mapping if we say k-way set associative that will mean that each set has k number of blocks. 
+Besides this, there is an intersting trick - 
+
+If we by design talk about direct mapping, the number of bits in the cache lines field are the those bits that are required to represent the 
+number of lines. lets say by diividing cache size and block size, we get a response - that is, the number of lines as 2^k then k here will be in the 
+cache lines bits part. 
+
+But if we convert the same in to 2^s- way set associative memory. then s bits will be taken out from the lines section and passed on to the tag section 
