@@ -1,0 +1,5 @@
+There are different types of cache replacement policies: \
+
+1. LRU > least recently used in past will be replaced first 
+2. Optimal > one that will arrive very late will be replaced first
+3. FIFO > Balady's anomaly 
