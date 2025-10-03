@@ -52,3 +52,49 @@ I - For instructions and data
 these two are a part of L1 cache. 
 
 They work in parallel 
+
+
+-----
+CONCEPT: 
+
+
+Ah — that's the key point of confusion. Let's think about the hierarchy:
+
+---
+
+**1. Cache block sizes**
+
+- **L1 cache block** = 4 words  
+- **L2 cache block** = 16 words  
+
+When there's a miss in L1, the CPU needs **one L1 block** (4 words) from the next level (L2).  
+But if L2 also misses, L2 must fetch **one L2 block** (16 words) from main memory.
+
+---
+
+**2. Why fetch 16 words if L1 only needs 4?**
+
+Because caches work on the principle of **spatial locality** and manage data in fixed-size blocks.
+
+- L2 is not just a "pass-through" — it stores data in blocks of 16 words.  
+- When L2 gets a miss, it must bring the **entire L2 block** (16 words) from main memory into the L2 cache.  
+- Then, out of that 16-word block in L2, the requested 4-word block for L1 is transferred to L1.
+
+So even though the CPU only needs 4 words right now, the memory system fetches a larger block (16 words) into L2 to **reduce future misses** — if the CPU accesses nearby words soon, they will already be in L2.
+
+---
+
+**3. Analogy**
+
+Imagine you have a bookshelf (L1) that holds one book (4 words).  
+A larger cabinet (L2) holds 4 books in a box (16 words).  
+If you want a book that's not on the shelf, you check the cabinet. If it's not in the cabinet either, you get the **entire box** (16 words) from the warehouse (main memory) and put it in the cabinet. Then you take the one book you need from the box and put it on the shelf.
+
+---
+
+**4. Summary**
+
+So the 16-word transfer from memory to L2 is because **L2's block size is 16 words**, not because L1 needs 16 words.  
+L1 will only get 4 words from that 16-word block in L2.
+
+That’s why we transfer 16 words (in 4 chunks of 4 words each) from memory to L2, then 4 words from L2 to L1.
