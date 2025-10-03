@@ -6,3 +6,15 @@ In hierarchal we access one after another
 In sequential we access parallely 
 
 In sequential we take less amount of time. 
+
+
+
+
+-----
+Cache inconsistency issues: 
+
+Lets say data a=1 is being called again and again and hence it has many copies throughout the heirarchy. There is teh same replicated data in main, 
+cache, secondary etc. In this situation if the value of a in cache changes (since cache is closest to the cpu) there is a need to change the value in 
+main and other memories as well so that consistency is maintained. 
+
+To maintain this, we have two concepts 
