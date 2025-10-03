@@ -18,3 +18,11 @@ cache, secondary etc. In this situation if the value of a in cache changes (sinc
 main and other memories as well so that consistency is maintained. 
 
 To maintain this, we have two concepts 
+1. Write back 
+2. Write through 
+
+Write back means, making all the changes in the cache and in the end once we are done, updating it in the main. This is the best policy as it reducing 
+number of main memory access ( remember that main mem acccess take a loooot of time) 
+
+Write through basically means that as soon as the value in the cache changes, we must reflect the same change immediately in the main as well. This will lead to 
+the number of main memory access 
