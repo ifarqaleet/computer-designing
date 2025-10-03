@@ -41,3 +41,14 @@ Disadvantage: More complex management, harder to maintain coherence.
 Non-inclusive (or non-exclusive):
 No strict rule; blocks may or may not be present in multiple levels.
 Many modern CPUs use this approach for flexibility.
+
+
+Cache hierarchy. 
+
+In cache there are two different types of parallel caches. D and I Cache. 
+D - for operands
+I - For instructions and data 
+
+these two are a part of L1 cache. 
+
+They work in parallel 
