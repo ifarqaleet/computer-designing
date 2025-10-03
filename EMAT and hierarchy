@@ -26,3 +26,18 @@ number of main memory access ( remember that main mem acccess take a loooot of t
 
 Write through basically means that as soon as the value in the cache changes, we must reflect the same change immediately in the main as well. This will lead to 
 the number of main memory access 
+
+
+🔹 Cache Inclusion
+This describes the relationship between multiple levels of cache (L1, L2, L3).
+Inclusive cache:
+Everything in L1 is also guaranteed to be in L2 (and so on).
+Advantage: Easy to maintain coherence.
+Disadvantage: Wastes space because data is duplicated.
+Exclusive cache:
+A block exists in only one level at a time.
+Advantage: Uses cache space more efficiently (no duplication).
+Disadvantage: More complex management, harder to maintain coherence.
+Non-inclusive (or non-exclusive):
+No strict rule; blocks may or may not be present in multiple levels.
+Many modern CPUs use this approach for flexibility.
